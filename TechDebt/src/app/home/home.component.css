@@ -1,0 +1,22 @@
+mat-card {
+  max-width: 100%;
+  min-height: 20em;
+  margin: 10px;
+}
+
+mat-card-content {
+  min-height: 20em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+mat-card-content footer{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+}
+
+body{
+  width: 50%;
+}

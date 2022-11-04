@@ -1,0 +1,40 @@
+{
+  "workflow_steps":
+   [
+    {
+      "id": 1,
+      "name": "Data collection",
+      "potentialDebts": ["1","2"]
+    },
+    {
+      "id": 2,
+      "name": "Data cleaning",
+      "potentialDebts": "teste"
+    },
+    {
+      "id": 3,
+      "name": "Data labeling",
+      "potentialDebts": "teste"
+    },
+    {
+      "id": 4,
+      "name": "Feature engineering",
+      "potentialDebts": "teste"
+    },
+    {
+      "id": 5,
+      "name": "Model training",
+      "potentialDebts": "teste"
+    },
+    {
+      "id": 6,
+      "name": "Model evaluation",
+      "potentialDebts": "teste"
+    },
+    {
+      "id": 7,
+      "name": "Model deployment",
+      "potentialDebts": "teste"
+    }
+  ]
+}
