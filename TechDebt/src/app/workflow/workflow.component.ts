@@ -1,7 +1,3 @@
-import { Workflow } from './../model/workflow';
-import { WorkflowService } from './workflow.service';
-import { Component, OnInit } from '@angular/core';
-import { plainToInstance } from 'class-transformer';
 import {
   animate,
   state,
@@ -9,6 +5,10 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { Component, OnInit } from '@angular/core';
+import { plainToInstance } from 'class-transformer';
+import { Workflow } from './../model/workflow';
+import { WorkflowService } from './workflow.service';
 
 @Component({
   selector: 'workflow',
@@ -27,7 +27,7 @@ import {
 })
 export class WorkflowComponent implements OnInit {
   steps: Workflow[] = [];
-  displayedColumns: string[] = ['id', 'name'];
+  displayedColumns: string[] = ['step', 'name'];
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
   expandedElement: Workflow | null = null;
 

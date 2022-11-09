@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { MatTableModule } from '@angular/material/table'
+import { MatTableModule } from '@angular/material/table';
 import { NgModule } from '@angular/core';
 
 import { MatListModule } from '@angular/material/list';
@@ -20,6 +20,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -28,10 +30,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MethodologyComponent,
     WorkflowComponent,
     PageNotFoundComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
     MatListModule,
+    MatStepperModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MatSidenavModule,
@@ -46,7 +50,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     FormsModule,
     HttpClientModule,
     CommonModule,
-    MatTableModule
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
