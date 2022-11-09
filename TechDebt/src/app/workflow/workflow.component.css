@@ -50,3 +50,12 @@ tr.example-element-row:not(.example-expanded-row):active {
 tr.mat-row:nth-child(1) > td:nth-child(3) {
   width: 1px;
 }
+
+.image-workflow {
+  min-height: 25%;
+  max-width: 60%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+

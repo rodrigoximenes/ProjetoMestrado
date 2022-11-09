@@ -1,3 +1,4 @@
+import { AppService } from './../app.service';
 import {
   animate,
   state,
@@ -31,9 +32,12 @@ export class WorkflowComponent implements OnInit {
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
   expandedElement: Workflow | null = null;
 
-  constructor(private workflowService: WorkflowService) {}
+  constructor(private workflowService: WorkflowService,
+              private appService: AppService) {}
 
   ngOnInit(): void {
+    this.appService.onChangeComponentName('Machine learning workflow');
+
     this.workflowService.getAllWorflowSteps().subscribe((steps: Workflow[]) => {
       this.steps = plainToInstance(Workflow, steps);
     });

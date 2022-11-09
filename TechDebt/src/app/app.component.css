@@ -25,10 +25,17 @@ mat-toolbar {
 .menu-header{
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-start;
   align-items: center;
+  width: 100%;
 }
 
-h1~span{
-  cursor: pointer;
+h1{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image-puc{
+  width: 3%;
+  height: 3%;
 }

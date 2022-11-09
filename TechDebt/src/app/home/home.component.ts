@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'home',
@@ -21,9 +22,10 @@ export class HomeComponent implements OnInit {
   'not sufficient to address ML-specific technical debt at the system level';
 
 
-  constructor() { }
+  constructor(private appService: AppService) { }
 
   ngOnInit(): void {
+    this.appService.onChangeComponentName('Technical debt types in machine learning code');
   }
 
 }
