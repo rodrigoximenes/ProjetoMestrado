@@ -14,7 +14,7 @@ mat-card-title {
 mat-card-title div:first-child {
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 70%;
 }
 
 mat-card-content {

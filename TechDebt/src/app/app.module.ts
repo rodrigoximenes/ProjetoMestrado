@@ -22,6 +22,7 @@ import { CommonModule } from '@angular/common';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { AboutComponent } from './about/about.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -30,13 +31,14 @@ import { AboutComponent } from './about/about.component';
     MethodologyComponent,
     WorkflowComponent,
     PageNotFoundComponent,
-    AboutComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
     MatListModule,
     MatStepperModule,
     BrowserAnimationsModule,
+    MatButtonToggleModule,
     AppRoutingModule,
     MatSidenavModule,
     MatInputModule,

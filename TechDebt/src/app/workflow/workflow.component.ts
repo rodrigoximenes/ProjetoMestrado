@@ -28,7 +28,7 @@ import { WorkflowService } from './workflow.service';
 })
 export class WorkflowComponent implements OnInit {
   steps: Workflow[] = [];
-  displayedColumns: string[] = ['step', 'name'];
+  displayedColumns: string[] = ['id', 'name'];
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
   expandedElement: Workflow | null = null;
 

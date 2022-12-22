@@ -7,12 +7,12 @@ import { AppService } from '../app.service';
   styleUrls: ['./about.component.css'],
 })
 export class AboutComponent implements OnInit {
-  title: string = 'Categorizing technical debt types in machine learning code';
+  title: string = 'Programming project';
+
   subTitle: string = '';
-  body: string =
-    'Thesis presented to the Programa de Pós–graduação em Informática ' +
-    'da PUC-Rio in partial fulfillment of the requirements for ' +
-    'the degree of Mestre em Informática';
+
+  body: string = 'Programming project presented in partial fulfillment of the requirements for ' +
+  'the degree of Mestre em Informática';
 
   constructor(private appService: AppService) {}
 

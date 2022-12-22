@@ -1,40 +1,94 @@
 {
-  "workflow_steps":
-   [
+  "workflow_steps": [
     {
-      "step": 1,
+      "id": 1,
       "name": "Data collection",
-      "potentialDebts": ["1","2"]
+      "potentialDebts": ["Testes", "2"]
     },
     {
-      "step": 2,
+      "id": 2,
       "name": "Data cleaning",
-      "potentialDebts": "teste"
+      "potentialDebts": [
+        "Inappropriate ETL (Extract, Transform, Load)",
+        "Missings treatment (not remove outliers, not use adequately median, mean, and mode, and etc)"
+      ]
     },
     {
-      "step": 3,
+      "id": 3,
       "name": "Data labeling",
-      "potentialDebts": "teste"
+      "potentialDebts": ["1", "2"]
     },
     {
-      "step": 4,
+      "id": 4,
       "name": "Feature engineering",
-      "potentialDebts": "teste"
+      "potentialDebts": ["1", "2"]
     },
     {
-      "step": 5,
+      "id": 5,
       "name": "Model training",
-      "potentialDebts": "teste"
+      "potentialDebts": ["1", "2"]
     },
     {
-      "step": 6,
+      "id": 6,
       "name": "Model evaluation",
-      "potentialDebts": "teste"
+      "potentialDebts": ["1", "2"]
     },
     {
-      "step": 7,
+      "id": 7,
       "name": "Model deployment",
-      "potentialDebts": "teste"
+      "potentialDebts": ["1", "2"]
+    }
+  ],
+  "methodology_steps": [
+    {
+      "id": 1,
+      "name": "Main Goal and Scope",
+      "description": "The main goal of our survey is to confirm our proposal for categorization of new types of technical debt in machine learning workflow, through experts' opinions. The GQM (Goal Question Metric) definition template (BASILI; ROMBACH, 1988) is used to set this goal as Analyze the proposal for the categorization of new types of technical debt for each step on the machine learning workflow with the purpose of characterizing with respect to perceive if it is relevant from the point of view of data scientists in the context of machine learning systems",
+      "details": []
+    },
+    {
+      "id": 2,
+      "name": "Population",
+      "description": "In order to receive answers with more assertiveness instead of getting high response rates, our population of ML experts will be sampled by selectingdata scientists that are working with relevant ML projects for at least 5 years in outstanding companies. Moreover, each survey participant should have experience as a team leader with good knowledge of software engineering good practices. We believe that this strategy allows us to reach a relevant sample of ML experts from the machine learning community.",
+      "details": []
+    },
+    {
+      "id": 3,
+      "name": "Survey Questions",
+      "description": "",
+      "details": []
+    },
+    {
+      "id": 4,
+      "name": "Metrics",
+      "description": "Likert scales (1- Disagree, 2- Partially Disagree, 3- Partially Agree, 4- Agree, and N-Not Sure) were used for assessing the relevance of the technical debts in the categorization proposed in both questions. The aggregated metric on the agreement for each technical debt was obtained using the median value, which can be safely applied to Likert scales as it has known as an ordinal (WOHLIN et al., 2012)",
+      "details": []
+    },
+    {
+      "id": 5,
+      "name": "Execution strategy",
+      "description": "The execution strategy, as a closed invitation approach, consisted of identifying the population sample according to the strategy and distributing the survey instrument via email. Due to the format of the questions, the survey was provided by google forms as a form. Participants should answer the survey within 15 days",
+      "details": []
+    },
+    {
+      "id": 6,
+      "name": "Statistical Techniques",
+      "description": "The median value was used to aggregate the responses for the set of answers. Moreover, the degree of concordance between the experts was represented by MAD (Median Absolute Deviation) and should be analyzed to further understand the degree of representativeness of the median for the sample. Statistical visualization features which aim to provide an overview of the results include tables and a bubble plot crossing information on technical debts and machine learning steps.",
+      "details": []
+    },
+    {
+      "id": 7,
+      "name": "Instrumentation",
+      "description": "The questionnaire instrument had a title, a short description of the research goal, and a note of consent stating that individual data will be handled anonymously, followed by two questions. Additionally, as supporting documentation, short descriptions of technical debt and its characteristics were provided as an appendix",
+      "details": []
+    },
+    {
+      "id": 8,
+      "name": "Validity Assessment",
+      "description": "In order to assure that answering the questionnaire requires at least 15 minutes, the survey was sent to other individuals before sending it to experts, as part of a pilot study aiming to mitigate some threats.Threats were identified while the process of planning the survey. These Threats and how it was treated are :",
+      "details": ["Measurement and results reliability: Using medians to aggregate individual Likert scale entries. Using the median absolute deviation to check on the agreement among the experts.",
+                  "Statistical conclusion validity: This threat strongly depends on the sample size. A mitigation that could be used is running future survey replications and aggregating the results",
+                  "Doubts of the experts on the purpose or on specific definitions: Including the research goal explanation and adding support information about technical debt and machine learning workflow."]
     }
   ]
 }
