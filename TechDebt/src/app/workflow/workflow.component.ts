@@ -29,7 +29,7 @@ import { WorkflowService } from './workflow.service';
 })
 export class WorkflowComponent implements OnInit, OnDestroy{
   steps: Workflow[] = [];
-  displayedColumns: string[] = ['id', 'nameExhibition'];
+  displayedColumns: string[] = ['step', 'name'];
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
   expandedElement: Workflow | null = null;
   stepNumber: number| null = null;
@@ -49,8 +49,8 @@ export class WorkflowComponent implements OnInit, OnDestroy{
       if(stepNumber){
         this.workflowService.getAllWorflowSteps()
           .subscribe(workflow => {
-            this.steps = workflow.filter(w => w.id === +stepNumber);
-            this.appService.onChangeComponentName(this.steps[0].nameExhibition);
+            this.steps = workflow.filter(w => w.step === +stepNumber);
+            this.appService.onChangeComponentName(this.steps[0].name);
           })
       }
     })

@@ -21,7 +21,7 @@
       <div class="element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
         <div class="element-diagram">
           <div class="element-position"> Potential Technical Debts: </div>
-          <div class="element-name"> {{element.nameExhibition}}  </div>
+          <div class="element-name"> {{element.name}}  </div>
         </div>
         <div class="element-description">
           <li *ngFor="let item of element.potentialDebts" >{{item}}</li>

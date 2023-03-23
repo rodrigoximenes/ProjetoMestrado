@@ -28,7 +28,7 @@ export class AppComponent {
   }
 
    goToRouterLink(stepWorkflow: Workflow){
-    this.router.navigate(['workflow', stepWorkflow.id])
+    this.router.navigate(['workflow', stepWorkflow.step])
     this.openSideNav = false;
    }
 }
