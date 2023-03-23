@@ -2,41 +2,58 @@
   "workflow_steps": [
     {
       "id": 1,
-      "name": "Data collection",
-      "potentialDebts": ["Testes", "2"]
+      "nameExhibition": "Problem Understanding and Requirements",
+      "nameDb":"ProblemUnderstandingAndRequirements",
+      "potentialDebts": ["Inappropriate Exploratory Analysis - Not understanding correctly the collected data (graphics helps identify outliers, missing values, and others)"]
     },
     {
       "id": 2,
-      "name": "Data cleaning",
+      "nameExhibition": "Data Collection",
+      "nameDb":"DataCollection",
       "potentialDebts": [
         "Inappropriate ETL (Extract, Transform, Load)",
-        "Missings treatment (not remove outliers, not use adequately median, mean, and mode, and etc)"
+        "Missing treatment (not remove outliers, not use adequately median, mean, and mode, and etc)",
+        "Missing rebalancing (typically by resampling) of the classes before proceeding with the learning of the classifier"
       ]
     },
     {
       "id": 3,
-      "name": "Data labeling",
-      "potentialDebts": ["1", "2"]
+      "nameExhibition": "Data Pre-Processing",
+      "nameDb":"DataPreProcessing",
+      "potentialDebts": ["Missing Labels",
+                         "Midstream Tag Additions (Lack of new tags, leading to inconsistent training data. The Fix: Lean On Domain Experts Early and Often)",
+                         "Overwhelming Tag Lists (The Fix: Use Broad Classes With Subtasks. Example: Blue, Cerulean, Tiffany blue)",
+                         "Annotator Bias (The fix: work with annotators who have that specialized knowledge)"
+                        ]
     },
     {
       "id": 4,
-      "name": "Feature engineering",
-      "potentialDebts": ["1", "2"]
+      "nameExhibition": "Model Creation and Training",
+      "nameDb":"ModelCreationAndTraining",
+      "potentialDebts": ["Unbalanced size of training and validation dataset (Neither the training set is too small or the validation set is too small)",
+                         "Model Selection Error (To assess model selection error would be to implement each of the algorithms and select the one with the best performance. Another method would be to perform an ensemble average)"
+                        ]
     },
     {
       "id": 5,
-      "name": "Model training",
-      "potentialDebts": ["1", "2"]
+      "nameExhibition": "Model Evaluation",
+      "nameDb":"ModelEvaluation",
+      "potentialDebts": ["Model Selection Error (Not testing all pre-processing, algorithms, or hyper-parameters possibilities)",
+                         "Error from Hyperparameter Tuning (Using the wrong hyperparameter values in your model. It is important that you train your model against all hyperparameters in order to determine the model with optimal performance)",
+                         "Overly simple algorithms causes missing relevant relations between features and target outputs (underfitting)"]
     },
     {
       "id": 6,
-      "name": "Model evaluation",
-      "potentialDebts": ["1", "2"]
+      "nameExhibition": "Model Deployment",
+      "nameDb":"ModelDeployment",
+      "potentialDebts": ["Wrong evaluation metric choosed (F1 Score vs ROC AUC (area under the curve) vs Accuracy vs PR AUC)",
+                         "Not use properly methods for evaluating a model’s performance (holdout and Cross-validation)"]
     },
     {
       "id": 7,
-      "name": "Model deployment",
-      "potentialDebts": ["1", "2"]
+      "nameExhibition": "Model Monitoring",
+      "nameDb":"ModelMonitoring",
+      "potentialDebts": ["Generalization/Feedback Error (Since the experimental training dataset differs from the real-world dataset, the model is expected to produce errors. Any mistakes encountered when transforming from an experimental model to its actual performance on the production line has to be analyzed.)"]
     }
   ],
   "methodology_steps": [
@@ -56,7 +73,10 @@
       "id": 3,
       "name": "Survey Questions",
       "description": "",
-      "details": []
+      "details": ["Q1: Is this categorization perceived as relevant? This question was structured as a table crossing the technical debt proposed. The experts should provide their answers by filling each cell with a number corresponding to a Likert scale (1- Disagree, 2-Partially Disagree, 3- Partially Agree, 4- Agree, and N- Not Sure).",
+      "Q2: Do the different types of debt proposed to occur in practice? This question follows the same structure found in Q1.",
+      "Q3: Complete the list by rating any other technical debt that you believe could be applied to cover one or more parts not covered by the categorization proposed. This question was optional and provided to allow the expert to suggest and evaluate other technical debts, not included in our initial list, that he considers relevant."
+    ]
     },
     {
       "id": 4,

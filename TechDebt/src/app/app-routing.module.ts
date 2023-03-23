@@ -13,7 +13,7 @@ const routes: Routes = [];
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: 'methodology', component: MethodologyComponent },
-      { path: 'workflow', component: WorkflowComponent },
+      { path: 'workflow/:stepNumber', component: WorkflowComponent },
       { path: 'about', component: AboutComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', component: PageNotFoundComponent },

@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Workflow } from '../model/workflow';

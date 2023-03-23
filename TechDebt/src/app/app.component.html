@@ -12,10 +12,10 @@
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav mode="over" [(opened)]="openSideNav">
       <mat-nav-list>
-        <a mat-list-item routerLink='/home' (click)="sidenav.toggle()">Home</a>
-        <a mat-list-item routerLink='/workflow' (click)="sidenav.toggle()">Workflow</a>
-        <a mat-list-item routerLink='/methodology' (click)="sidenav.toggle()">Methodology</a>
-        <a mat-list-item routerLink='/about' (click)="sidenav.toggle()">About</a>
+        <a mat-list-item [routerLink]="['home']" (click)="sidenav.toggle()">Home</a>
+        <a mat-list-item *ngFor="let stepWorkflow of steps"
+         (click)="goToRouterLink(stepWorkflow)">{{stepWorkflow.nameExhibition}}</a>
+         <a mat-list-item [routerLink]="['about']" (click)="sidenav.toggle()">About</a>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>

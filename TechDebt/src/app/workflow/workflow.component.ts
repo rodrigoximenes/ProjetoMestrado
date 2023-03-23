@@ -1,13 +1,14 @@
-import { AppService } from './../app.service';
 import {
   animate,
   state,
   style,
   transition,
-  trigger,
+  trigger
 } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
-import { plainToInstance } from 'class-transformer';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { takeWhile } from 'rxjs';
+import { AppService } from './../app.service';
 import { Workflow } from './../model/workflow';
 import { WorkflowService } from './workflow.service';
 
@@ -26,20 +27,36 @@ import { WorkflowService } from './workflow.service';
     ]),
   ],
 })
-export class WorkflowComponent implements OnInit {
+export class WorkflowComponent implements OnInit, OnDestroy{
   steps: Workflow[] = [];
-  displayedColumns: string[] = ['id', 'name'];
+  displayedColumns: string[] = ['id', 'nameExhibition'];
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
   expandedElement: Workflow | null = null;
+  stepNumber: number| null = null;
+  componentActive: boolean = true;
 
   constructor(private workflowService: WorkflowService,
-              private appService: AppService) {}
+              private appService: AppService,
+              private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.appService.onChangeComponentName('Machine learning workflow');
 
-    this.workflowService.getAllWorflowSteps().subscribe((steps: Workflow[]) => {
-      this.steps = plainToInstance(Workflow, steps);
-    });
+    this.route.paramMap
+    .pipe(takeWhile(()=> this.componentActive))
+    .subscribe(params => {
+      let stepNumber = params.get("stepNumber") ?? 0;
+
+      if(stepNumber){
+        this.workflowService.getAllWorflowSteps()
+          .subscribe(workflow => {
+            this.steps = workflow.filter(w => w.id === +stepNumber);
+            this.appService.onChangeComponentName(this.steps[0].nameExhibition);
+          })
+      }
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.componentActive = false;
   }
 }
