@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
-import { MethodologyComponent } from './methodology/methodology.component';
 import { WorkflowComponent } from './workflow/workflow.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,15 +22,16 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { MatStepperModule } from '@angular/material/stepper';
 import { AboutComponent } from './about/about.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { DebtComponent } from './debt/debt.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    MethodologyComponent,
     WorkflowComponent,
     PageNotFoundComponent,
-    AboutComponent
+    AboutComponent,
+    DebtComponent
   ],
   imports: [
     BrowserModule,

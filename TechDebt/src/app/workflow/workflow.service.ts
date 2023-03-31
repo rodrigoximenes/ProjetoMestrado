@@ -2,6 +2,7 @@ import { map, Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Workflow } from '../model/workflow';
+import { Debt } from '../model/debt';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +15,9 @@ export class WorkflowService {
 
   getAllWorflowSteps(): Observable<Workflow[]>{
     return this.http.get<Workflow[]>(this.ApiWorkflowSteps);
+  }
+
+  getWorflowStepById(id:number): Observable<Workflow>{
+    return this.http.get<Workflow>(`${this.ApiWorkflowSteps}/${id}`);
   }
 }

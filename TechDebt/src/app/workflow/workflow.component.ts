@@ -1,3 +1,4 @@
+import { DebtService } from './../debt/debt.service';
 import {
   animate,
   state,
@@ -36,6 +37,7 @@ export class WorkflowComponent implements OnInit, OnDestroy{
   componentActive: boolean = true;
 
   constructor(private workflowService: WorkflowService,
+              private debtService: DebtService,
               private appService: AppService,
               private route: ActivatedRoute) {}
 
@@ -47,10 +49,17 @@ export class WorkflowComponent implements OnInit, OnDestroy{
       let stepNumber = params.get("stepNumber") ?? 0;
 
       if(stepNumber){
-        this.workflowService.getAllWorflowSteps()
+        this.workflowService.getWorflowStepById(+stepNumber)
+        .pipe(takeWhile(()=> this.componentActive))
           .subscribe(workflow => {
-            this.steps = workflow.filter(w => w.step === +stepNumber);
+            this.steps = [workflow];
             this.appService.onChangeComponentName(this.steps[0].name);
+
+            this.debtService.getAllDebts()
+            .pipe(takeWhile(()=> this.componentActive))
+            .subscribe(debts =>{
+              this.steps[0].potentialDebts = [...debts.filter(debt => debt.idWorkflowStep == stepNumber)]
+            })
           })
       }
     })
