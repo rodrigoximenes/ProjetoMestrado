@@ -1,1 +1,21 @@
-<p>debt works!</p>
+<form [formGroup]="debtForm">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your new debt</mat-label>
+    <input matInput formControlName="debt" required>
+    <mat-error *ngIf="debtControl.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Select me</mat-label>
+    <mat-select formControlName="workflow">
+      <mat-option value="option">Option</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button class="btn btn-primary mr-3" type="submit" style="width:80px"
+    [title]="debtForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+    [disabled]="!debtForm.valid">
+    Save
+  </button>
+</form>

@@ -15,6 +15,7 @@
         <a mat-list-item [routerLink]="['home']" (click)="sidenav.toggle()">Home</a>
         <a mat-list-item *ngFor="let stepWorkflow of steps"
          (click)="goToRouterLink(stepWorkflow)">{{stepWorkflow.name}}</a>
+         <a mat-list-item [routerLink]="['debt']" (click)="sidenav.toggle()">Create Debt</a>
          <a mat-list-item [routerLink]="['about']" (click)="sidenav.toggle()">About</a>
       </mat-nav-list>
     </mat-sidenav>

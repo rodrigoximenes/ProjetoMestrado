@@ -21,8 +21,9 @@ import { CommonModule } from '@angular/common';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { AboutComponent } from './about/about.component';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { DebtComponent } from './debt/debt.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { DebtComponent } from './debt/debt.component';
     WorkflowComponent,
     PageNotFoundComponent,
     AboutComponent,
-    DebtComponent
+    DebtComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +54,7 @@ import { DebtComponent } from './debt/debt.component';
     HttpClientModule,
     CommonModule,
     MatTableModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
