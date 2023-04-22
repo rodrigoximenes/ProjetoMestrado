@@ -72,6 +72,14 @@ export class DebtComponent implements OnInit, OnDestroy {
 
     this.debtService.saveTechDebt(this.debt).subscribe(() =>{
       this.snackBar.open("Debt saved",'Close',{ duration: 2000 });
+      this.clearForm();
     })
+  }
+
+  clearForm(): void{
+    this.debtForm.reset();
+    for(let name in this.debtForm.controls) {
+      this.debtForm.controls[name].setErrors(null);
+    }
   }
 }
