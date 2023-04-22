@@ -185,16 +185,6 @@
       "id": 16,
       "idWorkflowStep": 7,
       "name": "Generalization/Feedback Error (Since the experimental training dataset differs from the real-world dataset, the model is expected to produce errors. Any mistakes encountered when transforming from an experimental model to its actual performance on the production line has to be analyzed.)"
-    },
-    {
-      "id": 17,
-      "idWorkflowStep": 6,
-      "name": "dsds"
-    },
-    {
-      "id": 18,
-      "idWorkflowStep": 6,
-      "name": "fdf"
     }
   ]
 }
