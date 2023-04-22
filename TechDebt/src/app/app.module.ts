@@ -24,6 +24,7 @@ import { AboutComponent } from './about/about.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { DebtComponent } from './debt/debt.component';
 import { MatSelectModule } from '@angular/material/select';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { MatSelectModule } from '@angular/material/select';
     CommonModule,
     MatTableModule,
     MatSelectModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

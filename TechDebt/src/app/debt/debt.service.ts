@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Debt } from '../model/debt';
 import { Workflow } from '../model/workflow';
 
@@ -14,6 +14,10 @@ export class DebtService {
   constructor(private http: HttpClient) { }
 
   saveTechDebt(debt: Debt): Observable<Debt>{
+
+    console.log(debt);
+    console.log(this.getMaxDebtIdRegistered())
+
     return this.http.post<Debt>(this.ApiDebts, debt);
   }
 
@@ -31,5 +35,17 @@ export class DebtService {
 
   getAllDebts(): Observable<Debt[]>{
     return this.http.get<Debt[]>(this.ApiDebts);
+  }
+
+  private getMaxDebtIdRegistered(): number{
+
+    let id: number = 0;
+    this.getAllDebts().pipe(map(debt =>{
+      id = debt.reduce((item, curr) => {
+            return item.id < curr.id ? curr : item;
+          }).id;
+    }));
+console.log(id)
+    return id;
   }
 }

@@ -1,19 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Debt } from '../model/debt';
 import { AppService } from './../app.service';
 import { DebtService } from './debt.service';
 import { WorkflowService } from '../workflow/workflow.service';
+import { Workflow } from '../model/workflow';
+import { takeWhile } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-debt',
   templateUrl: './debt.component.html',
   styleUrls: ['./debt.component.css'],
 })
-export class DebtComponent implements OnInit {
+export class DebtComponent implements OnInit, OnDestroy {
   debtForm!: FormGroup;
   debt = new Debt();
   debtMessage!: string;
+  workflowSteps: Workflow[] = [];
+  componentActive: boolean = true;
 
   private validationMessages = {
     required: 'Please enter your new debt.',
@@ -23,8 +28,10 @@ export class DebtComponent implements OnInit {
     private appService: AppService,
     private debtService: DebtService,
     private workflowService: WorkflowService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private snackBar: MatSnackBar
   ) {}
+
 
   ngOnInit(): void {
     this.appService.onChangeComponentName('Create Debts');
@@ -33,10 +40,22 @@ export class DebtComponent implements OnInit {
       debt: ['', [Validators.required, Validators.minLength(3)]],
       workflow: ['', Validators.required],
     });
+
+    this.workflowService.getAllWorflowSteps()
+      .pipe(takeWhile(() => this.componentActive))
+      .subscribe(workflowSteps => this.workflowSteps = workflowSteps);
+  }
+
+  ngOnDestroy(): void {
+    this.componentActive = false;
   }
 
   get debtControl(): FormControl {
     return this.debtForm.get('debt') as FormControl;
+  }
+
+  get workflowControl(): FormControl {
+    return this.debtForm.get('workflow') as FormControl;
   }
 
   getErrorMessage() {
@@ -44,6 +63,15 @@ export class DebtComponent implements OnInit {
       return 'You must enter a value';
     }
 
-    return this.debtControl.hasError('required') ? 'Choose one step' : '';
+    return this.debtControl.hasError('minlength') ? 'Required Length: 3' : '';
+  }
+
+  save(form: FormGroup){
+    this.debt.name = this.debtControl.value;
+    this.debt.idWorkflowStep = this.workflowControl.value.id;
+
+    this.debtService.saveTechDebt(this.debt).subscribe(() =>{
+      this.snackBar.open("Debt saved",'Close',{ duration: 2000 });
+    })
   }
 }

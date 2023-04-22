@@ -1,134 +1,200 @@
 {
   "workflow_steps": [
     {
-	  "id": 1,
+      "id": 1,
       "step": 1,
       "name": "Problem Understanding and Requirements",
-      "nameDb":"ProblemUnderstandingAndRequirements",
-      "potentialDebts": [ {"id": 1} ]
-	  },
+      "nameDb": "ProblemUnderstandingAndRequirements",
+      "potentialDebts": [
+        {
+          "id": 1
+        }
+      ]
+    },
     {
-	  "id": 2,
+      "id": 2,
       "step": 2,
       "name": "Data Collection",
-      "nameDb":"DataCollection",
-      "potentialDebts": [ {"id": 2}, {"id": 3}, {"id": 4} ]
+      "nameDb": "DataCollection",
+      "potentialDebts": [
+        {
+          "id": 2
+        },
+        {
+          "id": 3
+        },
+        {
+          "id": 4
+        }
+      ]
     },
     {
-	  "id": 3,
+      "id": 3,
       "step": 3,
       "name": "Data Pre-Processing",
-      "nameDb":"DataPreProcessing",
-      "potentialDebts": [ {"id": 5}, {"id": 6}, {"id": 7}, {"id": 8}]
+      "nameDb": "DataPreProcessing",
+      "potentialDebts": [
+        {
+          "id": 5
+        },
+        {
+          "id": 6
+        },
+        {
+          "id": 7
+        },
+        {
+          "id": 8
+        }
+      ]
     },
     {
-	  "id": 4,
+      "id": 4,
       "step": 4,
       "name": "Model Creation and Training",
-      "nameDb":"ModelCreationAndTraining",
-      "potentialDebts": [{"id": 9}, {"id": 10}]
+      "nameDb": "ModelCreationAndTraining",
+      "potentialDebts": [
+        {
+          "id": 9
+        },
+        {
+          "id": 10
+        }
+      ]
     },
     {
-	  "id": 5,
+      "id": 5,
       "step": 5,
       "name": "Model Evaluation",
-      "nameDb":"ModelEvaluation",
-      "potentialDebts": [{"id": 11}, {"id": 12}, {"id": 13}]  },
+      "nameDb": "ModelEvaluation",
+      "potentialDebts": [
+        {
+          "id": 11
+        },
+        {
+          "id": 12
+        },
+        {
+          "id": 13
+        }
+      ]
+    },
     {
-	  "id": 6,
+      "id": 6,
       "step": 6,
       "name": "Model Deployment",
-      "nameDb":"ModelDeployment",
-      "potentialDebts": [{"id": 14}, {"id": 15}]
+      "nameDb": "ModelDeployment",
+      "potentialDebts": [
+        {
+          "id": 14
+        },
+        {
+          "id": 15
+        }
+      ]
     },
     {
-	  "id": 7,
+      "id": 7,
       "step": 7,
       "name": "Model Monitoring",
-      "nameDb":"ModelMonitoring",
-      "potentialDebts": [{"id": 16}]
+      "nameDb": "ModelMonitoring",
+      "potentialDebts": [
+        {
+          "id": 16
+        }
+      ]
     }
   ],
-  "debts":[
-	{
-		"id": 1,
-		"idWorkflowStep": 1,
-		"name":"Inappropriate Exploratory Analysis - Not understanding correctly the collected data (graphics helps identify outliers, missing values, and others)"
-	},
-	{
-		"id": 2,
-		"idWorkflowStep": 2,
-		"name": "Inappropriate ETL (Extract, Transform, Load)"
-	},
-	{
-		"id": 3,
-		"idWorkflowStep": 2,
-		"name":"Missing treatment (not remove outliers, not use adequately median, mean, and mode, and etc)"
-	},
-	{
-		"id": 4,
-		"idWorkflowStep": 2,
-		"name":"Missing rebalancing (typically by resampling) of the classes before proceeding with the learning of the classifier"
-	},
-	{
-		"id": 5,
-		"idWorkflowStep": 3,
-		"name":"Missing Labels"
-	},
-	{
-		"id": 6,
-		"idWorkflowStep": 3,
-		"name":"Midstream Tag Additions (Lack of new tags, leading to inconsistent training data. The Fix: Lean On Domain Experts Early and Often)"
-	},
-	{
-		"id": 7,
-		"idWorkflowStep": 3,
-		"name":"Overwhelming Tag Lists (The Fix: Use Broad Classes With Subtasks. Example: Blue, Cerulean, Tiffany blue)"
-	},
-	{
-		"id": 8,
-		"idWorkflowStep": 3,
-		"name":"Annotator Bias (The fix: work with annotators who have that specialized knowledge)"
+  "debts": [
+    {
+      "id": 1,
+      "idWorkflowStep": 1,
+      "name": "Inappropriate Exploratory Analysis - Not understanding correctly the collected data (graphics helps identify outliers, missing values, and others)"
     },
-	{
-		"id": 9,
-		"idWorkflowStep": 4,
-		"name":"Unbalanced size of training and validation dataset (Neither the training set is too small or the validation set is too small)"
+    {
+      "id": 2,
+      "idWorkflowStep": 2,
+      "name": "Inappropriate ETL (Extract, Transform, Load)"
     },
-	{
-		"id": 10,
-		"idWorkflowStep": 4,
-		"name":"Model Selection Error (To assess model selection error would be to implement each of the algorithms and select the one with the best performance. Another method would be to perform an ensemble average)"
+    {
+      "id": 3,
+      "idWorkflowStep": 2,
+      "name": "Missing treatment (not remove outliers, not use adequately median, mean, and mode, and etc)"
     },
-	{
-		"id": 11,
-		"idWorkflowStep": 5,
-		"name":"Model Selection Error (Not testing all pre-processing, algorithms, or hyper-parameters possibilities)"
+    {
+      "id": 4,
+      "idWorkflowStep": 2,
+      "name": "Missing rebalancing (typically by resampling) of the classes before proceeding with the learning of the classifier"
     },
-	{
-		"id": 12,
-		"idWorkflowStep": 5,
-		"name":"Error from Hyperparameter Tuning (Using the wrong hyperparameter values in your model. It is important that you train your model against all hyperparameters in order to determine the model with optimal performance)"
+    {
+      "id": 5,
+      "idWorkflowStep": 3,
+      "name": "Missing Labels"
     },
-	{
-		"id": 13,
-		"idWorkflowStep": 5,
-		"name":"Overly simple algorithms causes missing relevant relations between features and target outputs (underfitting)"
+    {
+      "id": 6,
+      "idWorkflowStep": 3,
+      "name": "Midstream Tag Additions (Lack of new tags, leading to inconsistent training data. The Fix: Lean On Domain Experts Early and Often)"
     },
-	{
-		"id": 14,
-		"idWorkflowStep": 6,
-		"name":"Wrong evaluation metric choosed (F1 Score vs ROC AUC (area under the curve) vs Accuracy vs PR AUC)"
+    {
+      "id": 7,
+      "idWorkflowStep": 3,
+      "name": "Overwhelming Tag Lists (The Fix: Use Broad Classes With Subtasks. Example: Blue, Cerulean, Tiffany blue)"
     },
-	{
-		"id": 15,
-		"idWorkflowStep": 6,
-		"name":"Not use properly methods for evaluating a model’s performance (holdout and Cross-validation)"
-	},
-	{
-		"id": 16,
-		"idWorkflowStep": 7,
-		"name":"Generalization/Feedback Error (Since the experimental training dataset differs from the real-world dataset, the model is expected to produce errors. Any mistakes encountered when transforming from an experimental model to its actual performance on the production line has to be analyzed.)"
+    {
+      "id": 8,
+      "idWorkflowStep": 3,
+      "name": "Annotator Bias (The fix: work with annotators who have that specialized knowledge)"
+    },
+    {
+      "id": 9,
+      "idWorkflowStep": 4,
+      "name": "Unbalanced size of training and validation dataset (Neither the training set is too small or the validation set is too small)"
+    },
+    {
+      "id": 10,
+      "idWorkflowStep": 4,
+      "name": "Model Selection Error (To assess model selection error would be to implement each of the algorithms and select the one with the best performance. Another method would be to perform an ensemble average)"
+    },
+    {
+      "id": 11,
+      "idWorkflowStep": 5,
+      "name": "Model Selection Error (Not testing all pre-processing, algorithms, or hyper-parameters possibilities)"
+    },
+    {
+      "id": 12,
+      "idWorkflowStep": 5,
+      "name": "Error from Hyperparameter Tuning (Using the wrong hyperparameter values in your model. It is important that you train your model against all hyperparameters in order to determine the model with optimal performance)"
+    },
+    {
+      "id": 13,
+      "idWorkflowStep": 5,
+      "name": "Overly simple algorithms causes missing relevant relations between features and target outputs (underfitting)"
+    },
+    {
+      "id": 14,
+      "idWorkflowStep": 6,
+      "name": "Wrong evaluation metric choosed (F1 Score vs ROC AUC (area under the curve) vs Accuracy vs PR AUC)"
+    },
+    {
+      "id": 15,
+      "idWorkflowStep": 6,
+      "name": "Not use properly methods for evaluating a model’s performance (holdout and Cross-validation)"
+    },
+    {
+      "id": 16,
+      "idWorkflowStep": 7,
+      "name": "Generalization/Feedback Error (Since the experimental training dataset differs from the real-world dataset, the model is expected to produce errors. Any mistakes encountered when transforming from an experimental model to its actual performance on the production line has to be analyzed.)"
+    },
+    {
+      "id": 17,
+      "idWorkflowStep": 6,
+      "name": "dsds"
+    },
+    {
+      "id": 18,
+      "idWorkflowStep": 6,
+      "name": "fdf"
     }
   ]
 }
