@@ -39,6 +39,7 @@ export class DebtComponent implements OnInit, OnDestroy {
     this.debtForm = this.fb.group({
       debt: ['', [Validators.required, Validators.minLength(3)]],
       workflow: ['', Validators.required],
+      comment: [''],
     });
 
     this.workflowService.getAllWorflowSteps()
@@ -58,6 +59,10 @@ export class DebtComponent implements OnInit, OnDestroy {
     return this.debtForm.get('workflow') as FormControl;
   }
 
+  get commentControl(): FormControl {
+    return this.debtForm.get('comment') as FormControl;
+  }
+
   getErrorMessage() {
     if (this.debtControl.hasError('required')) {
       return 'You must enter a value';
@@ -69,6 +74,7 @@ export class DebtComponent implements OnInit, OnDestroy {
   save(form: FormGroup){
     this.debt.name = this.debtControl.value;
     this.debt.idWorkflowStep = this.workflowControl.value.id;
+    this.debt.comment = this.commentControl.value;
 
     this.debtService.saveTechDebt(this.debt).subscribe(() =>{
       this.snackBar.open("Debt saved",'Close',{
@@ -78,6 +84,8 @@ export class DebtComponent implements OnInit, OnDestroy {
       this.clearForm();
     })
   }
+
+
 
   clearForm(): void{
     this.debtForm.reset();

@@ -54,82 +54,110 @@
     {
       "id": 1,
       "idWorkflowStep": 1,
-      "name": "Inappropriate Exploratory Analysis - Not understanding correctly the collected data (graphics helps identify outliers, missing values, and others)"
+      "name": "Inappropriate Exploratory Analysis - Not understanding correctly the collected data (graphics helps identify outliers, missing values, and others)",
+      "comment": ""
     },
     {
       "id": 2,
       "idWorkflowStep": 2,
-      "name": "Inappropriate ETL (Extract, Transform, Load)"
+      "name": "Inappropriate ETL (Extract, Transform, Load)",
+      "comment": ""
     },
     {
       "id": 3,
       "idWorkflowStep": 2,
-      "name": "Missing treatment (not remove outliers, not use adequately median, mean, and mode, and etc)"
+      "name": "Missing treatment (not remove outliers, not use adequately median, mean, and mode, and etc)",
+      "comment": ""
     },
     {
       "id": 4,
       "idWorkflowStep": 2,
-      "name": "Missing rebalancing (typically by resampling) of the classes before proceeding with the learning of the classifier"
+      "name": "Missing rebalancing (typically by resampling) of the classes before proceeding with the learning of the classifier",
+      "comment": ""
     },
     {
       "id": 5,
       "idWorkflowStep": 3,
-      "name": "Missing Labels"
+      "name": "Missing Labels",
+      "comment": ""
     },
     {
       "id": 6,
       "idWorkflowStep": 3,
-      "name": "Midstream Tag Additions (Lack of new tags, leading to inconsistent training data. The Fix: Lean On Domain Experts Early and Often)"
+      "name": "Midstream Tag Additions (Lack of new tags, leading to inconsistent training data. The Fix: Lean On Domain Experts Early and Often)",
+      "comment": ""
     },
     {
       "id": 7,
       "idWorkflowStep": 3,
-      "name": "Overwhelming Tag Lists (The Fix: Use Broad Classes With Subtasks. Example: Blue, Cerulean, Tiffany blue)"
+      "name": "Overwhelming Tag Lists (The Fix: Use Broad Classes With Subtasks. Example: Blue, Cerulean, Tiffany blue)",
+      "comment": ""
     },
     {
       "id": 8,
       "idWorkflowStep": 3,
-      "name": "Annotator Bias (The fix: work with annotators who have that specialized knowledge)"
+      "name": "Annotator Bias (The fix: work with annotators who have that specialized knowledge)",
+      "comment": ""
     },
     {
       "id": 9,
       "idWorkflowStep": 4,
-      "name": "Unbalanced size of training and validation dataset (Neither the training set is too small or the validation set is too small)"
+      "name": "Unbalanced size of training and validation dataset (Neither the training set is too small or the validation set is too small)",
+      "comment": ""
     },
     {
       "id": 10,
       "idWorkflowStep": 4,
-      "name": "Model Selection Error (To assess model selection error would be to implement each of the algorithms and select the one with the best performance. Another method would be to perform an ensemble average)"
+      "name": "Model Selection Error (To assess model selection error would be to implement each of the algorithms and select the one with the best performance. Another method would be to perform an ensemble average)",
+      "comment": ""
     },
     {
       "id": 11,
       "idWorkflowStep": 5,
-      "name": "Model Selection Error (Not testing all pre-processing, algorithms, or hyper-parameters possibilities)"
+      "name": "Model Selection Error (Not testing all pre-processing, algorithms, or hyper-parameters possibilities)",
+      "comment": ""
     },
     {
       "id": 12,
       "idWorkflowStep": 5,
-      "name": "Error from Hyperparameter Tuning (Using the wrong hyperparameter values in your model. It is important that you train your model against all hyperparameters in order to determine the model with optimal performance)"
+      "name": "Error from Hyperparameter Tuning (Using the wrong hyperparameter values in your model. It is important that you train your model against all hyperparameters in order to determine the model with optimal performance)",
+      "comment": ""
     },
     {
       "id": 13,
       "idWorkflowStep": 5,
-      "name": "Overly simple algorithms causes missing relevant relations between features and target outputs (underfitting)"
+      "name": "Overly simple algorithms causes missing relevant relations between features and target outputs (underfitting)",
+      "comment": ""
     },
     {
       "id": 14,
       "idWorkflowStep": 6,
-      "name": "Wrong evaluation metric choosed (F1 Score vs ROC AUC (area under the curve) vs Accuracy vs PR AUC)"
+      "name": "Wrong evaluation metric choosed (F1 Score vs ROC AUC (area under the curve) vs Accuracy vs PR AUC)",
+      "comment": ""
     },
     {
       "id": 15,
       "idWorkflowStep": 6,
-      "name": "Not use properly methods for evaluating a model’s performance (holdout and Cross-validation)"
+      "name": "Not use properly methods for evaluating a model’s performance (holdout and Cross-validation)",
+      "comment": ""
     },
     {
       "id": 16,
       "idWorkflowStep": 7,
-      "name": "Generalization/Feedback Error (Since the experimental training dataset differs from the real-world dataset, the model is expected to produce errors. Any mistakes encountered when transforming from an experimental model to its actual performance on the production line has to be analyzed.)"
+      "name": "Generalization/Feedback Error (Since the experimental training dataset differs from the real-world dataset, the model is expected to produce errors. Any mistakes encountered when transforming from an experimental model to its actual performance on the production line has to be analyzed.)",
+      "comment": ""
+    },
+    {
+      "id": 17,
+      "idWorkflowStep": 1,
+      "name": "123",
+      "comment": "12312321"
+    },
+    {
+      "id": 18,
+      "idWorkflowStep": 1,
+      "name": "1231312",
+      "comment": "Problem Understanding and RequirementsProblem Understanding and RequirementsProblem Understanding and RequirementsProblem Understanding and RequirementsProblem Understanding and RequirementsProblem Understanding and RequirementsProblem Understanding and RequirementsProblem Understanding and RequirementsProblem Understanding and RequirementsProblem Understanding and RequirementsProblem Understanding and RequirementsProblem Understanding and RequirementsProblem Understanding and RequirementsProblem Understanding and Requirements"
     }
   ]
 }

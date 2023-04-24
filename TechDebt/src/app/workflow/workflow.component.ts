@@ -12,6 +12,7 @@ import { takeWhile } from 'rxjs';
 import { AppService } from './../app.service';
 import { Workflow } from './../model/workflow';
 import { WorkflowService } from './workflow.service';
+import { Debt } from '../model/debt';
 
 @Component({
   selector: 'workflow',
@@ -29,10 +30,10 @@ import { WorkflowService } from './workflow.service';
   ],
 })
 export class WorkflowComponent implements OnInit, OnDestroy{
-  steps: Workflow[] = [];
-  displayedColumns: string[] = ['step', 'name'];
+  debts: Debt[] = [];
+  displayedColumns: string[] = ['id', 'name'];
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
-  expandedElement: Workflow | null = null;
+  expandedElement: Debt | null = null;
   stepNumber: number| null = null;
   componentActive: boolean = true;
 
@@ -52,13 +53,13 @@ export class WorkflowComponent implements OnInit, OnDestroy{
         this.workflowService.getWorflowStepById(+stepNumber)
         .pipe(takeWhile(()=> this.componentActive))
           .subscribe(workflow => {
-            this.steps = [workflow];
-            this.appService.onChangeComponentName(this.steps[0].name);
+            this.appService.onChangeComponentName(workflow.name);
 
             this.debtService.getDebtsWorkflowStep(+stepNumber)
             .pipe(takeWhile(()=> this.componentActive))
             .subscribe(debts =>{
-              this.steps[0].potentialDebts = [...debts]
+              this.debts = [...debts];
+
             })
           })
       }

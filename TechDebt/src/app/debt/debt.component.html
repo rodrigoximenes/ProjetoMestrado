@@ -13,6 +13,16 @@
     </mat-select>
   </mat-form-field>
 
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your comment</mat-label>
+    <textarea matInput
+              cdkTextareaAutosize
+              formControlName="comment"
+              #autosize="cdkTextareaAutosize"
+              cdkAutosizeMinRows="1"
+              cdkAutosizeMaxRows="5"></textarea>
+  </mat-form-field>
+
   <button mat-raised-button
     color="primary"
     [disabled]="!debtForm.valid"

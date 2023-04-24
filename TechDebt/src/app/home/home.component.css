@@ -21,7 +21,6 @@ mat-card-content {
   min-height: 20em;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 mat-card-content footer {
@@ -32,7 +31,7 @@ mat-card-content footer {
 }
 
 body {
-  width: 50%;
+  width: 56%;
   padding: 1em 0 0 1.3em;
 }
 
@@ -46,4 +45,9 @@ body {
   height: 10%;
   width: 10%;
   align-self: flex-end;
+}
+
+.image-workflow {
+  min-height: 5%;
+  max-width: 60%;
 }
