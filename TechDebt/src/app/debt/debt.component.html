@@ -8,7 +8,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Select the workflow step</mat-label>
-    <mat-select formControlName="workflow">
+    <mat-select formControlName="workflow" [compareWith]="compareWorkflow">
       <mat-option *ngFor="let workflowStep of workflowSteps" [value]="workflowStep">{{workflowStep.name}}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -26,7 +26,7 @@
   <button mat-raised-button
     color="primary"
     [disabled]="!debtForm.valid"
-    (click)="save(debtForm)">
+    (click)="save()">
     Save
   </button>
 </form>

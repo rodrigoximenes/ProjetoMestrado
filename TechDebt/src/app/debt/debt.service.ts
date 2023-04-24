@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, Subject, map } from 'rxjs';
 import { Debt } from '../model/debt';
-import { Workflow } from '../model/workflow';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +24,8 @@ export class DebtService {
     return this.http.delete<Debt>(`${this.ApiDebts}/${debt.id}`);
   }
 
-  getTechDebtById(id:number): Observable<Workflow>{
-    return this.http.get<Workflow>(`${this.ApiDebts}/${id}`);
+  getTechDebtById(id:number): Observable<Debt>{
+    return this.http.get<Debt>(`${this.ApiDebts}/${id}`);
   }
 
   getAllDebts(): Observable<Debt[]>{

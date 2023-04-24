@@ -51,5 +51,7 @@ tr.mat-row:nth-child(1) > td:nth-child(3) {
   width: 1px;
 }
 
-
+.action-line{
+  display: flex;
+}
 

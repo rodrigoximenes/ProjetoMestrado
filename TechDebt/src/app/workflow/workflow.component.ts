@@ -13,6 +13,7 @@ import { AppService } from './../app.service';
 import { Workflow } from './../model/workflow';
 import { WorkflowService } from './workflow.service';
 import { Debt } from '../model/debt';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'workflow',
@@ -32,35 +33,32 @@ import { Debt } from '../model/debt';
 export class WorkflowComponent implements OnInit, OnDestroy{
   debts: Debt[] = [];
   displayedColumns: string[] = ['id', 'name'];
-  columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
+  columnsToDisplayWithExpand = [...this.displayedColumns, 'action', 'expand'];
   expandedElement: Debt | null = null;
-  stepNumber: number| null = null;
+  stepNumber!: string | null;
   componentActive: boolean = true;
 
   constructor(private workflowService: WorkflowService,
               private debtService: DebtService,
               private appService: AppService,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute,
+              private router: Router,
+              private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
 
     this.route.paramMap
     .pipe(takeWhile(()=> this.componentActive))
     .subscribe(params => {
-      let stepNumber = params.get("stepNumber") ?? 0;
+      this.stepNumber = params.get("stepNumber");
 
-      if(stepNumber){
-        this.workflowService.getWorflowStepById(+stepNumber)
+      if(this.stepNumber){
+        this.workflowService.getWorflowStepById(+this.stepNumber)
         .pipe(takeWhile(()=> this.componentActive))
           .subscribe(workflow => {
             this.appService.onChangeComponentName(workflow.name);
 
-            this.debtService.getDebtsWorkflowStep(+stepNumber)
-            .pipe(takeWhile(()=> this.componentActive))
-            .subscribe(debts =>{
-              this.debts = [...debts];
-
-            })
+            this.restoreDataSource();
           })
       }
     })
@@ -68,5 +66,29 @@ export class WorkflowComponent implements OnInit, OnDestroy{
 
   ngOnDestroy(): void {
     this.componentActive = false;
+  }
+
+  restoreDataSource():void{
+    if(this.stepNumber){
+      this.debtService.getDebtsWorkflowStep(+this.stepNumber)
+      .pipe(takeWhile(()=> this.componentActive))
+      .subscribe(debts =>{
+        this.debts = [...debts];
+      })
+    }
+  }
+
+  edit(debt:Debt){
+    this.router.navigate(['/debt', debt.id ]);
+  }
+
+  delete(debt:Debt){
+    this.debtService.deleteTechDebt(debt).subscribe(() =>{
+      this.restoreDataSource();
+      this.snackBar.open("Debt deleted",'Close',{
+        duration: 2000,
+        horizontalPosition: "center",
+        verticalPosition: "top" });
+    })
   }
 }

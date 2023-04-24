@@ -5,8 +5,9 @@ import { AppService } from './../app.service';
 import { DebtService } from './debt.service';
 import { WorkflowService } from '../workflow/workflow.service';
 import { Workflow } from '../model/workflow';
-import { takeWhile } from 'rxjs';
+import { takeWhile, Observable, concatMap, combineLatest } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-debt',
@@ -19,6 +20,7 @@ export class DebtComponent implements OnInit, OnDestroy {
   debtMessage!: string;
   workflowSteps: Workflow[] = [];
   componentActive: boolean = true;
+  id!: string | null;
 
   private validationMessages = {
     required: 'Please enter your new debt.',
@@ -29,7 +31,9 @@ export class DebtComponent implements OnInit, OnDestroy {
     private debtService: DebtService,
     private workflowService: WorkflowService,
     private fb: FormBuilder,
-    private snackBar: MatSnackBar
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
 
@@ -45,6 +49,30 @@ export class DebtComponent implements OnInit, OnDestroy {
     this.workflowService.getAllWorflowSteps()
       .pipe(takeWhile(() => this.componentActive))
       .subscribe(workflowSteps => this.workflowSteps = workflowSteps);
+
+    this.route.paramMap
+      .pipe(takeWhile(()=> this.componentActive))
+      .subscribe(params => {
+        this.id = params.get("id");
+
+        if(this.id){
+          this.appService.onChangeComponentName('Edit Debt: ' + this.id );
+          this.debtService.getTechDebtById(+this.id)
+            .pipe(takeWhile(() => this.componentActive))
+            .subscribe(debt => {
+              this.workflowService.getWorflowStepById(debt.idWorkflowStep)
+                .pipe(takeWhile(() => this.componentActive))
+                .subscribe(workflow =>{
+                  this.debtForm.patchValue({
+                              debt: debt.name,
+                              workflow: workflow,
+                              comment: debt.comment
+                              }
+                              )
+                            });
+            })
+        }
+      });
   }
 
   ngOnDestroy(): void {
@@ -71,21 +99,34 @@ export class DebtComponent implements OnInit, OnDestroy {
     return this.debtControl.hasError('minlength') ? 'Required Length: 3' : '';
   }
 
-  save(form: FormGroup){
+  compareWorkflow(n1: any, n2: any) {
+    return n1 && n2 && n1.id === n2.id;
+  }
+
+  save(){
     this.debt.name = this.debtControl.value;
     this.debt.idWorkflowStep = this.workflowControl.value.id;
     this.debt.comment = this.commentControl.value;
 
-    this.debtService.saveTechDebt(this.debt).subscribe(() =>{
-      this.snackBar.open("Debt saved",'Close',{
-        duration: 2000,
-        horizontalPosition: "left",
-        verticalPosition: "top" });
-      this.clearForm();
-    })
+    if(this.id){
+      this.debt.id = +this.id;
+      this.debtService.updateTechDebt(this.debt).subscribe(() =>{
+        this.snackBar.open("Debt updated",'Close',{
+          duration: 2000,
+          horizontalPosition: "center",
+          verticalPosition: "top" });
+          this.router.navigate(['/workflow', this.debt.idWorkflowStep ]);
+      })
+    }else{
+      this.debtService.saveTechDebt(this.debt).subscribe(() =>{
+        this.snackBar.open("Debt saved",'Close',{
+          duration: 2000,
+          horizontalPosition: "center",
+          verticalPosition: "top" });
+        this.clearForm();
+      })
+    }
   }
-
-
 
   clearForm(): void{
     this.debtForm.reset();
