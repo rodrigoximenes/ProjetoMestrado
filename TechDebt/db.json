@@ -5,104 +5,49 @@
       "step": 1,
       "name": "Problem Understanding and Requirements",
       "nameDb": "ProblemUnderstandingAndRequirements",
-      "potentialDebts": [
-        {
-          "id": 1
-        }
-      ]
+      "potentialDebts": []
     },
     {
       "id": 2,
       "step": 2,
       "name": "Data Collection",
       "nameDb": "DataCollection",
-      "potentialDebts": [
-        {
-          "id": 2
-        },
-        {
-          "id": 3
-        },
-        {
-          "id": 4
-        }
-      ]
+      "potentialDebts": []
     },
     {
       "id": 3,
       "step": 3,
       "name": "Data Pre-Processing",
       "nameDb": "DataPreProcessing",
-      "potentialDebts": [
-        {
-          "id": 5
-        },
-        {
-          "id": 6
-        },
-        {
-          "id": 7
-        },
-        {
-          "id": 8
-        }
-      ]
+      "potentialDebts": []
     },
     {
       "id": 4,
       "step": 4,
       "name": "Model Creation and Training",
       "nameDb": "ModelCreationAndTraining",
-      "potentialDebts": [
-        {
-          "id": 9
-        },
-        {
-          "id": 10
-        }
-      ]
+      "potentialDebts": []
     },
     {
       "id": 5,
       "step": 5,
       "name": "Model Evaluation",
       "nameDb": "ModelEvaluation",
-      "potentialDebts": [
-        {
-          "id": 11
-        },
-        {
-          "id": 12
-        },
-        {
-          "id": 13
-        }
-      ]
+      "potentialDebts": []
     },
     {
       "id": 6,
       "step": 6,
       "name": "Model Deployment",
       "nameDb": "ModelDeployment",
-      "potentialDebts": [
-        {
-          "id": 14
-        },
-        {
-          "id": 15
-        }
-      ]
+      "potentialDebts": []
     },
     {
       "id": 7,
       "step": 7,
       "name": "Model Monitoring",
       "nameDb": "ModelMonitoring",
-      "potentialDebts": [
-        {
-          "id": 16
-        }
-      ]
+      "potentialDebts": []
     }
   ],
   "debts": [

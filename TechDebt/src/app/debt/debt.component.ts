@@ -71,7 +71,10 @@ export class DebtComponent implements OnInit, OnDestroy {
     this.debt.idWorkflowStep = this.workflowControl.value.id;
 
     this.debtService.saveTechDebt(this.debt).subscribe(() =>{
-      this.snackBar.open("Debt saved",'Close',{ duration: 2000 });
+      this.snackBar.open("Debt saved",'Close',{
+        duration: 2000,
+        horizontalPosition: "left",
+        verticalPosition: "top" });
       this.clearForm();
     })
   }

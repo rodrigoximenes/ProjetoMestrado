@@ -55,10 +55,10 @@ export class WorkflowComponent implements OnInit, OnDestroy{
             this.steps = [workflow];
             this.appService.onChangeComponentName(this.steps[0].name);
 
-            this.debtService.getAllDebts()
+            this.debtService.getDebtsWorkflowStep(+stepNumber)
             .pipe(takeWhile(()=> this.componentActive))
             .subscribe(debts =>{
-              this.steps[0].potentialDebts = [...debts.filter(debt => debt.idWorkflowStep == stepNumber)]
+              this.steps[0].potentialDebts = [...debts]
             })
           })
       }

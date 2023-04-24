@@ -32,4 +32,12 @@ export class DebtService {
   getAllDebts(): Observable<Debt[]>{
     return this.http.get<Debt[]>(this.ApiDebts);
   }
+
+  getDebtsWorkflowStep(idWorkflowStep: number): Observable<Debt[]>{
+    return this.getAllDebts()
+            .pipe(
+              map(debts => [...debts.filter(debt => debt.idWorkflowStep == idWorkflowStep)]
+              )
+            );
+  }
 }
