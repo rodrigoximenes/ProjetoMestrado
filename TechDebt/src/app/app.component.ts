@@ -31,4 +31,8 @@ export class AppComponent {
     this.router.navigate(['workflow', stepWorkflow.step])
     this.openSideNav = false;
    }
+
+   getMenuName(stepWorkflow: Workflow): string{
+    return stepWorkflow.id + '. ' + stepWorkflow.name;
+   }
 }

@@ -5,7 +5,7 @@ import { AppService } from './../app.service';
 import { DebtService } from './debt.service';
 import { WorkflowService } from '../workflow/workflow.service';
 import { Workflow } from '../model/workflow';
-import { takeWhile, Observable, concatMap, combineLatest } from 'rxjs';
+import { takeWhile, Observable, concatMap, combineLatest, forkJoin, catchError, throwError } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -57,20 +57,42 @@ export class DebtComponent implements OnInit, OnDestroy {
 
         if(this.id){
           this.appService.onChangeComponentName('Edit Debt: ' + this.id );
+
           this.debtService.getTechDebtById(+this.id)
-            .pipe(takeWhile(() => this.componentActive))
-            .subscribe(debt => {
-              this.workflowService.getWorflowStepById(debt.idWorkflowStep)
-                .pipe(takeWhile(() => this.componentActive))
-                .subscribe(workflow =>{
-                  this.debtForm.patchValue({
-                              debt: debt.name,
-                              workflow: workflow,
-                              comment: debt.comment
-                              }
-                              )
-                            });
+          .pipe(
+            takeWhile(() => this.componentActive),
+            catchError(error => {
+              console.error('Error fetching tech debt:', error);
+              this.router.navigate(['**']);
+              return throwError(error);
             })
+          )
+          .subscribe(debt => {
+            forkJoin({
+              workflow: this.workflowService.getWorflowStepById(debt.idWorkflowStep)
+                .pipe(
+                  catchError(error => {
+                    console.error('Error fetching workflow step:', error);
+                    this.router.navigate(['**']);
+                    return throwError(error);
+                  })
+                ),
+            }).pipe(
+              takeWhile(() => this.componentActive),
+              catchError(error => {
+                console.error('Error combining observables:', error);
+                this.router.navigate(['**']);
+                return throwError(error);
+              })
+            )
+            .subscribe(({ workflow }) => {
+              this.debtForm.patchValue({
+                debt: debt.name,
+                workflow: workflow,
+                comment: debt.comment
+              });
+            });
+          });
         }
       });
   }
