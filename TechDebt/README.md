@@ -25,3 +25,14 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+## Instruções detalhadas
+
+De modo resumido, para instalar corretamente o projeto é necessário ter o Node.js.
+
+O usuário deve abrir o terminal dentro da pasta TechDebt do projeto e digitar o comando npm install.
+
+Após o comando ser digitado, o usuário deve esperar a conclusão do mesmo para então digitar o comando: ng serve -o. 
+
+Uma aba no navegador irá se abrir e em outro terminal dentro da mesma pasta o comando json-server --watch db.json deve ser digitado.
